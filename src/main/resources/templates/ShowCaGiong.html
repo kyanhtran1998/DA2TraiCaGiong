@@ -26,7 +26,7 @@
 						<h2>DANH SÁCH CÁ GIỐNG</h2>
 						<div class="panel-group category-products" id="accordian">
 							<!--category-productsr-->
-							<div class="panel panel-default"
+							<div class="panel panel-default" th:if="${Top10Fish}"
 								th:each="top10Fish,iterStat : ${Top10Fish} ">
 								<div class="panel-heading">
 									<h4 class="panel-title">
@@ -44,7 +44,7 @@
 					<div class="features_items">
 						<!--features_items-->
 						<h2 class="title text-center">Danh Sách Cá Giống</h2>
-						<div class="col-sm-4"
+						<div class="col-sm-4" th:if="${fishs.pageList}"
 							th:each="fishNew,iterStat : ${fishs.pageList}">
 							<div class="product-image-wrapper">
 								<div class="single-products">
