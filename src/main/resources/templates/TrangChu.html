@@ -96,7 +96,7 @@
 							<li data-target="#slider-carousel" data-slide-to="3"></li>
 						</ol>
 						
-						<div class="carousel-inner" th:if="${not #lists.isEmpty(backGround)} >
+						<div class="carousel-inner" th:if="${not #lists.isEmpty(backGround)}" >
 							<div class="item active">
 								<div class="col-sm-6">
 									<h1><strong>TRẠI GIỐNG CÁ KIM NGÂN</strong></h1>
@@ -159,7 +159,7 @@
 					</div>
 				</div>
 				
-				<div class="col-sm-9 padding-right" th:if="${not #lists.isEmpty(fishNew)}  >
+				<div class="col-sm-9 padding-right" th:if="${not #lists.isEmpty(fishNew)}"  >
 					<div class="features_items"><!--features_items-->
 						<h2 class="title text-center">Cá Giống Mới Nhất</h2>
 						<div class="col-sm-4" th:if="${fishTop}" th:each="fishNew,iterStat : ${fishTop}" >
@@ -181,7 +181,7 @@
 					
 				
 					
-					<div class="recommended_items" th:if="${not #lists.isEmpty(fishs)} th:fragment="recommended_items"><!--recommended_items-->
+					<div class="recommended_items" th:if="${not #lists.isEmpty(fishs)}" th:fragment="recommended_items"><!--recommended_items-->
 						<h2 class="title text-center">Cá Giống Nổi Bật</h2>
 						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">
@@ -251,7 +251,7 @@
 	<footer id="footer" th:fragment="Footer"><!--Footer-->
 		
 		<div class="footer-widget">
-			<div class="container" th:if="${not #lists.isEmpty(lienhe)}  >
+			<div class="container" th:if="${not #lists.isEmpty(lienhe)} " >
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="single-widget">
