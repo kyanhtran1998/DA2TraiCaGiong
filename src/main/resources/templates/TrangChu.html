@@ -147,7 +147,7 @@
 						<h2>DANH SÁCH CÁ GIỐNG</h2>
 						<div class="panel-group category-products" id="accordian">
 						<!--category-productsr-->
-							<div class="panel panel-default" th:if="${not #lists.isEmpty(Top10Fish)}  th:each="top10Fish,iterStat : ${Top10Fish} ">
+							<div class="panel panel-default" th:if="${not #lists.isEmpty(Top10Fish)}"  th:each="top10Fish,iterStat : ${Top10Fish} ">
 								<div class="panel-heading">
 									<h4 class="panel-title"><a  th:href="@{'/ChiTietCaGiong/' +${top10Fish.id}}" th:text="${top10Fish.name}" ></a></h4>
 								</div>
