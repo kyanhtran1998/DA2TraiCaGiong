@@ -89,4 +89,10 @@ public class UserServiceImpl implements UserService {
 	public User save(User user) {
 		 return userRepository.save(user);
 	}
+	
+	@Override
+	public List<User> search(String term) {
+		// TODO Auto-generated method stub
+		return userRepository.findByNameContaining(term);
+	}
 }
