@@ -85,7 +85,7 @@ public class ManagerUserController {
 	@GetMapping("/Admin/ListUser/search/{pageNumber}")
 	public String searchFish(@RequestParam("term") String term, Model model, HttpServletRequest request,
 			@PathVariable int pageNumber) {
-		List<User> list = userservice.findAll();
+		List<User> list = (List<User>) userservice.findByEmail(term);
 		PagedListHolder<?> pages = (PagedListHolder<?>) request.getSession().getAttribute("users");
 		int pagesize = 5;
 		pages = new PagedListHolder<>(list);
