@@ -19,6 +19,5 @@ public interface UserService extends UserDetailsService {
     List<User> findAll();
     
     void delete(Integer id);
-    
-    List<User> search(String term);
+ 
 }
