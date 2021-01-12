@@ -55,7 +55,7 @@ public class ManagerBlogController {
 	public String searchFish(@RequestParam("term") String term, Model model, HttpServletRequest request,
 			@PathVariable int pageNumber) {
 		List<Blog> list = blogService.search(term);
-		PagedListHolder<?> pages = (PagedListHolder<?>) request.getSession().getAttribute("listfish");
+		PagedListHolder<?> pages = (PagedListHolder<?>) request.getSession().getAttribute("listBlog");
 		int pagesize = 5;
 		pages = new PagedListHolder<>(list);
 		pages.setPageSize(pagesize);
@@ -64,7 +64,7 @@ public class ManagerBlogController {
 		if (goToPage <= pages.getPageCount() && goToPage >= 0) {
 			pages.setPage(goToPage);
 		}
-		request.getSession().setAttribute("listfish", pages);
+		request.getSession().setAttribute("listBlog", pages);
 		int current = pages.getPage() + 1;
 		int begin = Math.max(1, current - list.size());
 		int end = Math.min(begin + 5, pages.getPageCount());
@@ -75,7 +75,7 @@ public class ManagerBlogController {
 		model.addAttribute("currentIndex", current);
 		model.addAttribute("totalPageCount", totalPageCount);
 		model.addAttribute("baseUrl", baseUrl);
-		model.addAttribute("fishs", pages);
+		model.addAttribute("Blogs", pages);
 		return "ListBlog";
 	}
 	
