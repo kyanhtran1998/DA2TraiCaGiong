@@ -138,13 +138,12 @@ public class ManagerOrderController {
 	@GetMapping("/Admin/ListOrder/OrderDetailUpdate/{id}")
 	public String UpdateOrderdetail(@PathVariable int id, Model model,RedirectAttributes redirect) {
 		Optional<Order> orderdetail = orderService.findOne(id);
-		Order order = new Order(orderdetail.get().getId(),orderdetail.get().getUser(),1,orderdetail.get().getDate(),orderdetail.get().getAmount());
-		orderService.save(order);
 		List<OrderDetail> list = orderDetailReponsitory.FindOrder(id);
-		if(list)
 		if(UpdateFish(list) == false) {
 			redirect.addFlashAttribute("alertMessage", "Hết Số Lượng cá giống");
 		}else {
+			Order order = new Order(orderdetail.get().getId(),orderdetail.get().getUser(),1,orderdetail.get().getDate(),orderdetail.get().getAmount());
+			orderService.save(order);
 			redirect.addFlashAttribute("successMessage", "Xác Nhận Đơn Hàng Thành Công");
 		}
 		return "redirect:/Admin/ListOrder/OrderDetail/{id}";
