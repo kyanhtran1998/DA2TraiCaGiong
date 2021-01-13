@@ -22,8 +22,8 @@ public class Fish {
     @Column(name = "name")
 	private String name;
     @NotEmpty 
-    @Column(name = "description")
-	private String description;
+    @Column(name="description", columnDefinition="TEXT")
+    private String description;
     @NotEmpty 
     @Column(name = "image")
 	private String image;
