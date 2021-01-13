@@ -17,7 +17,70 @@
 			<!-- top navigation -->
 			<div class="top_nav" th:replace="Layout :: top_nav"></div>
 			<!-- /top navigation -->
+				<div class="right_col" role="main"
+				th:each="product,iterStat : ${listorder}">
+				<div class="">
+					<div class="page-title">
+						<div class="title_left">
+							<h3>
+								Chi Tiết Đơn Hàng 
+							</h3>
+						</div>
 
+					</div>
+
+					<div class="clearfix"></div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="x_panel">
+								<div class="x_content">
+									<div th:text="${successMessage}"
+										th:if="${successMessage ne null}" class="alert alert-success"
+										id="Alerbox"></div>
+
+									<!-- start project list -->
+									<table class="table table-striped projects">
+										<thead>
+											<tr>
+												<th>Mã Đơn Hàng</th>
+												<th>Tên Khách Hàng</th>
+												<th>Số Điện Thoại</th>
+												<th>Địa Chỉ Đặt Hàng</th>
+												<th>Số Tiền</th>
+												<th>Ngày Đặt Mua</th>
+												<th>Trạng thái Mua Hàng</th>
+												<th></th>								
+											</tr>
+										</thead>
+										<tbody>
+											
+											<tr>
+												<td th:text="${'#00'+product.id}"></td>
+												<td th:text="${product.user.name}"></td>
+												<td th:text="${product.user.phone}"></td>
+												<td th:text="${product.user.address}"></td>
+												<td th:text="${#numbers.formatDecimal(product.amount, 0, 'COMMA', 0, 'POINT')} + 'VND' "></td>
+												<td th:text="${#dates.format(product.date, 'dd/MM/yyyy')}"></td>
+												<td th:if="${product.status} > 0 ">
+													<button type="button" class="btn btn-round btn-danger">Xử lý</button>
+												</td>
+													<td th:if="${product.status} == 0 ">
+													<button type="button" class="btn btn-round btn-success" style="font-size: 13px;">Chưa Xử lý</button>
+												</td>
+											
+			
+												<td th:if="${product.status} == 0 " ><a href="#"
+													th:href="@{/Admin/ListOrder/OrderDetailUpdate/} + ${product.id}"
+													class="btn btn-round btn-info" style="font-size: 13px;">Xác Nhận Đơn Hàng</a>
+													</td>
+
+											</tr>
+										</tbody>
+									</table>
+									<!-- end project list -->
+
+								</div>
+							</div>
 			<!-- page content -->
 			
 					<div class="row">
