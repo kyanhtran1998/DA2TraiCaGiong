@@ -22,11 +22,12 @@ public class Blog {
     @Column(name = "title")
 	private String name;
     @NotEmpty 
-    @Column(name = "content")
-	private String content;
-    @NotEmpty 
-    @Column(name = "summary")
-	private String summary;
+    @Column(name="content", columnDefinition="TEXT")
+    private String content;
+    @NotEmpty
+   @Column(name="summary", columnDefinition="TEXT")
+
+   private String summary;
     
     @Column(name = "image")
 	private String image;
