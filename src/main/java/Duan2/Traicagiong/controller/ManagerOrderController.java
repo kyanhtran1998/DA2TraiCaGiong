@@ -142,10 +142,11 @@ public class ManagerOrderController {
 		orderService.save(order);
 		List<OrderDetail> list = orderDetailReponsitory.FindOrder(id);
 		if(list)
-		if(!UpdateFish(list)) {
+		if(UpdateFish(list) == false) {
 			redirect.addFlashAttribute("alertMessage", "Hết Số Lượng cá giống");
+		}else {
+			redirect.addFlashAttribute("successMessage", "Xác Nhận Đơn Hàng Thành Công");
 		}
-		redirect.addFlashAttribute("successMessage", "Xác Nhận Đơn Hàng Thành Công");
 		return "redirect:/Admin/ListOrder/OrderDetail/{id}";
 
 	}
@@ -157,7 +158,7 @@ public class ManagerOrderController {
 		   int soluong = fish.get().getQuality();
 		   int soluongmoi = soluong-orderDetail.getQuality() ;
 		   if(soluongmoi < 0) {
-			   return true;
+			   return false;
 		   }
 		   Fish fishupdate = new Fish(fish.get().getId(),fish.get().getName(),fish.get().getDescription(),fish.get().getImage(),
 				   fish.get().getPrice(),soluongmoi ,fish.get().getDate());
