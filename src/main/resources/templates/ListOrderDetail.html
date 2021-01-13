@@ -37,7 +37,9 @@
 									<div th:text="${successMessage}"
 										th:if="${successMessage ne null}" class="alert alert-success"
 										id="Alerbox"></div>
-
+									<div th:text="${alertMessage}"
+										th:if="${alertMessage} ne null}" class="alert alert-danger"
+										id="Alerbox"></div>
 									<!-- start project list -->
 									<table class="table table-striped projects">
 										<thead>
