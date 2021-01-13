@@ -141,21 +141,29 @@ public class ManagerOrderController {
 		Order order = new Order(orderdetail.get().getId(),orderdetail.get().getUser(),1,orderdetail.get().getDate(),orderdetail.get().getAmount());
 		orderService.save(order);
 		List<OrderDetail> list = orderDetailReponsitory.FindOrder(id);
-		UpdateFish(list);
+		if(list)
+		if(!UpdateFish(list)) {
+			redirect.addFlashAttribute("alertMessage", "Hết Số Lượng cá giống");
+		}
 		redirect.addFlashAttribute("successMessage", "Xác Nhận Đơn Hàng Thành Công");
 		return "redirect:/Admin/ListOrder/OrderDetail/{id}";
 
 	}
 	
 	
-	 public void UpdateFish(List<OrderDetail> list) {
+	  public Boolean UpdateFish(List<OrderDetail> list) {
 	   for (OrderDetail orderDetail : list) {
 		   Optional<Fish> fish = fishService.findOne(orderDetail.getFish().getId());
 		   int soluong = fish.get().getQuality();
+		   int soluongmoi = soluong-orderDetail.getQuality() ;
+		   if(soluongmoi < 0) {
+			   return true;
+		   }
 		   Fish fishupdate = new Fish(fish.get().getId(),fish.get().getName(),fish.get().getDescription(),fish.get().getImage(),
-				   fish.get().getPrice(), soluong-orderDetail.getQuality(),fish.get().getDate());
+				   fish.get().getPrice(),soluongmoi ,fish.get().getDate());
 		   fishService.save(fishupdate);
 	   	}
+	   return true;
 	  
 	}
 }
