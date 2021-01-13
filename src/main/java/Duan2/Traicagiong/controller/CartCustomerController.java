@@ -126,7 +126,7 @@ public class CartCustomerController {
 	            Map<Integer, Cart> cart = (Map<Integer, Cart>) session.getAttribute("cart");
 	            if (cart.containsKey(id)) {
 	                int quantity = cart.get(id).getQuantity() + soluong;
-	                cart.put(id, new Cart(id, product.get().getName(), product.get().getPrice(), ++quantity, product.get().getImage()));
+	                cart.put(id, new Cart(id, product.get().getName(), product.get().getPrice(), quantity, product.get().getImage()));
 	            } else {
 	                cart.put(id,new Cart(id, product.get().getName(), product.get().getPrice(), soluong, product.get().getImage()));
 	                session.setAttribute("cart", cart);
