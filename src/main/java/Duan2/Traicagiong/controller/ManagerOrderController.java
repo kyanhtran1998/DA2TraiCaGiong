@@ -131,7 +131,7 @@ public class ManagerOrderController {
 		Optional<Order> orderdetail = orderService.findOne(id);
 		model.addAttribute("listorder", orderdetail.get());
 		
-		return "ListOrderdetail";
+		return "ListOrderDetail";
 
 	}
 	
