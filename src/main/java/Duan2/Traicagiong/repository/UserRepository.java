@@ -17,6 +17,5 @@ public interface UserRepository extends JpaRepository < User, Integer > {
     @Query("SELECT e FROM User e")
     Page<User> findUsers(Pageable pageable);
     
-    	List<User> findByNameContaining(String term);
     
 }
