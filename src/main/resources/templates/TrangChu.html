@@ -203,7 +203,7 @@
 										</div>
 									</div>								
 								</div>
-								<div class="item" tth:if="${#lists.size(fishs)} &gt; 2" >	
+								<div class="item" th:if="${#lists.size(fishs)} &gt; 2" >	
 									<div class="col-sm-4"  th:each="test1,iterStat1 : ${fishs}"   th:if="${iterStat1.index} &gt; 2 and ${iterStat1.index} &lt; 6 ">
 										<div class="product-image-wrapper">
 											<div class="single-products">
