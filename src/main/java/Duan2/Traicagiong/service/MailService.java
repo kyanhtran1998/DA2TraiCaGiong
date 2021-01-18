@@ -52,7 +52,7 @@ public class MailService {
         return sb.toString();
     }
 
-    public void sendMail(String username,String Matkhaumoi) {
+    public void sendMail(String username,String Matkhaumoi,,String email) {
         Properties props = new Properties();
         props.put("mail.smtp.host", host);
         props.put("mail.smtp.starttls.enable", "true");
@@ -67,7 +67,7 @@ public class MailService {
                 });
         Message message = new MimeMessage(session);
         try {
-            message.setRecipients(Message.RecipientType.TO, new InternetAddress[]{new InternetAddress("kyanhtk2058@gmail.com")});
+            message.setRecipients(Message.RecipientType.TO, new InternetAddress[]{new InternetAddress(email)});
 
             message.setFrom(new InternetAddress(email));
             message.setSubject("Mật Khẩu Mới Cho Tài Khoản Sử Dụng Hệ Thống Website Trại Cá Giống");
