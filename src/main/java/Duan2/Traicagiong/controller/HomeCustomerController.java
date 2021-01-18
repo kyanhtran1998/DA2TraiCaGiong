@@ -229,7 +229,7 @@ public class HomeCustomerController {
 	    	return "redirect:/QuenMatKhau" ;
 	    }
 	    String password = MailService.randomAlphaNumeric(8);
-		mailService.sendMail(user.getName(),password);
+		mailService.sendMail(user.getName(),password,user.getEmail());
 	    user.setPassword(passwordEncoder.encode(password));
 	    userservice.save(user);
 		reAttributes.addFlashAttribute("success", "Mật Khẩu Mới Đã Gửi Đến Email");
